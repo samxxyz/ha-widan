@@ -28,8 +28,10 @@ Ket :
 
 LANGKAH-LANGKAH DOCKER SWARM :
 
+Jalankan pada Node Manager
+
 1. build image dari setiap service dan push ke akun dockerhub masing-masing
-    # Login ke akun DockerHub
+    # Login ke akun DockerHub jika belum
     docker login
 
     # Build dan push image db:
