@@ -58,3 +58,6 @@ LANGKAH-LANGKAH DOCKER SWARM :
     docker service ps widan_web
     docker service ps widan_db
     docker service ps widan_haproxy
+
+5. Untuk menghapus stack
+    docker stack rm widan
