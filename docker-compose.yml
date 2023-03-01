@@ -1,0 +1,52 @@
+version: '3.9'
+services:
+  web:
+    ports:
+      - 8080:80
+      - 4443:443
+    image: kevinmz/web-widan
+    networks: 
+      - widan
+    deploy:
+      replicas: 4
+      placement:
+        constraints: [node.role == worker]
+
+  db:
+    ports:
+      - 3306:3306
+    image: kevinmz/db-widan
+    environment:
+      MYSQL_ROOT_PASSWORD: "widan16"
+      MYSQL_DATABASE: "widan_db"
+    networks: 
+      - widan
+    deploy:
+      replicas: 2
+      placement:
+        constraints: [node.role == worker]
+
+  haproxy:
+    ports:
+      - 80:80
+      - 8404:8404
+    image: kevinmz/haproxy
+    configs:
+      - source: haproxy_cfg
+        target: /usr/local/etc/haproxy/haproxy.cfg
+        mode: 0440
+    dns: 127.0.0.11
+    networks: 
+      - widan
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+      
+networks:
+  widan:
+    driver: overlay
+
+configs:
+  haproxy_cfg:
+    file: ./haproxy.cfg
