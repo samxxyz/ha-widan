@@ -63,5 +63,15 @@ Jalankan pada Node Manager
     docker service ps widan_db
     docker service ps widan_haproxy
 
-5. Untuk menghapus stack
+5. Masuk ke container db untuk inisialisasi db
+    azem@worker1:~$ docker exec -it widan_db.1.heyxt29kuz0c8yu5fj7msyk79 bash
+    root@b5b0d532380e:/var/lib/mysql# mysql -uroot -pwidan16 widan_db < widan_db.sql
+    root@b5b0d532380e:/var/lib/mysql#
+    
+    azem@worker1:~$ docker exec -it widan_db.2.yjdzrav1q6vj6w2vz7p8eu2gb bash
+    root@424f43dfd1b7:/var/lib/mysql# mysql -uroot -pwidan16 widan_db < widan_db.sql
+    root@424f43dfd1b7:/var/lib/mysql#
+    
+6. Untuk menghapus stack
     docker stack rm widan
+ 
