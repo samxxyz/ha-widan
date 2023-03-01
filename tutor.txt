@@ -52,6 +52,8 @@ Jalankan pada Node Manager
 2. jalankan docker stack deploy
     docker stack deploy -c docker-compose.yml --with-registry-auth widan
     
+    setelah deploy memang lama soalnya bakal nge pull dari dockerhub
+    
 3. Cek apakah telah running
     docker stack services widan
     docker service ls
