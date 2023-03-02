@@ -3,6 +3,7 @@ Syarat :
 - minimal terdapat 1 vm untuk manager dan 1 vm untuk worker, lebih banyak lebih baik.
     Setting Adapter VM : (NATNetwork dan Host-Only Adapter)
 
+# Jalankan Pada Node Manager dan Worker
 INSTALL DOCKER :
 1. sudo ./install.sh
 
